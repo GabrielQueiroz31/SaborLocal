@@ -169,3 +169,25 @@
     margin-top: $spacing-xs;
   }
 }
+
+// Responsividade para dispositivos móveis
+@media (max-width: $breakpoint-mobile) {
+  .pageHeader {
+    margin-bottom: $spacing-md;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .kpiGrid {
+    grid-template-columns: 1fr;
+    gap: $spacing-sm;
+  }
+
+  .reportHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xxs;
+  }
+}

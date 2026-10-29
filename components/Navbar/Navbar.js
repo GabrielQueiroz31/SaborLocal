@@ -68,6 +68,7 @@ export default function Navbar() {
 
         <nav aria-label="Navegação principal">
           <ul className={styles.navLinks}>
+            {/* Itens visíveis apenas para Garçom */}
             {usuario?.role === "garcom" && (
               <>
                 <li className={styles.navItem}>
@@ -103,6 +104,7 @@ export default function Navbar() {
               </>
             )}
 
+            {/* Itens visíveis apenas para Gerente */}
             {usuario?.role === "gerente" && (
               <>
                 <li className={styles.navItem}>
@@ -145,6 +147,7 @@ export default function Navbar() {
                     Cardápio
                   </Link>
                 </li>
+                {/* Link "Faturamento" visível apenas para usuários com role === "gerente" */}
                 <li className={styles.navItem}>
                   <Link
                     href="/faturamento"
