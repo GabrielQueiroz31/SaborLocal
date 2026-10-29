@@ -1,0 +1,236 @@
+@use "@/styles/variables" as *;
+
+.pageContainer {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xxl;
+}
+
+.pageHeader {
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    font-size: 1.85rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xxs;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.95rem;
+  }
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @media (max-width: $breakpoint-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 80px;
+
+  @media (max-width: $breakpoint-desktop) {
+    position: static;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xs;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: $color-text-muted;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface;
+    color: $color-text;
+    outline: none;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.12);
+    }
+  }
+}
+
+.checkboxField {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xxs;
+
+  input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: $color-primary;
+    cursor: pointer;
+  }
+
+  label {
+    font-size: 0.875rem;
+    color: $color-text;
+    cursor: pointer;
+  }
+}
+
+.formActions {
+  display: flex;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+.cancelBtn {
+  background-color: transparent;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  padding: 0.625rem 1rem;
+  border-radius: $radius-md;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $color-surface-subtle;
+    color: $color-text;
+  }
+}
+
+.listCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+}
+
+.listHeader {
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+
+  h2 {
+    font-size: 1.25rem;
+    color: $color-text;
+  }
+
+  .counter {
+    font-size: 0.85rem;
+    color: $color-text-muted;
+    background-color: $color-surface-subtle;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+
+  th {
+    background-color: $color-surface-subtle;
+    padding: $spacing-sm $spacing-md;
+    font-weight: 600;
+    color: $color-text-muted;
+    border-bottom: 1px solid $color-border;
+  }
+
+  td {
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $color-border;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: #faf7f2;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+.categoryBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: $radius-full;
+  background-color: $color-primary-light;
+  color: $color-primary;
+}
+
+.price {
+  font-weight: 600;
+  color: $color-text;
+}
+
+.tableActions {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.emptyState {
+  padding: $spacing-xxl $spacing-md;
+  text-align: center;
+  color: $color-text-muted;
+
+  p {
+    font-size: 0.95rem;
+    margin-top: $spacing-xs;
+  }
+}

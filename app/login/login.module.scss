@@ -1,0 +1,144 @@
+@use "@/styles/variables" as *;
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  background: radial-gradient(circle at top, #fffdfa 0%, $color-bg 100%);
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background-color: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-lg;
+  padding: $spacing-xl;
+  animation: fadeIn 0.4s ease-out;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-lg;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+
+  .brandBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $color-primary;
+    background-color: $color-primary-light;
+    padding: 0.3rem 0.8rem;
+    border-radius: $radius-full;
+    margin-bottom: $spacing-sm;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xs;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface;
+    color: $color-text;
+    outline: none;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+    }
+
+    &::placeholder {
+      color: $color-text-light;
+    }
+  }
+}
+
+.submitBtn {
+  margin-top: $spacing-xs;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.demoBox {
+  margin-top: $spacing-lg;
+  padding: $spacing-sm;
+  background-color: $color-surface-subtle;
+  border-radius: $radius-md;
+  border: 1px dashed $color-border-dark;
+  font-size: 0.8rem;
+  color: $color-text-muted;
+
+  h4 {
+    margin-bottom: $spacing-xxs;
+    color: $color-text;
+    font-size: 0.825rem;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  code {
+    background: #e9e2d8;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

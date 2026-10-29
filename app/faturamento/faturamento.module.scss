@@ -1,0 +1,171 @@
+@use "@/styles/variables" as *;
+
+.pageContainer {
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-xxl;
+}
+
+.pageHeader {
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    font-size: 1.85rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xxs;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $color-text-muted;
+  }
+}
+
+// Cards de Indicadores (KPIs)
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.kpiCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-sm;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  .kpiIcon {
+    font-size: 2.2rem;
+    background-color: $color-surface-subtle;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+  }
+
+  .kpiContent {
+    display: flex;
+    flex-direction: column;
+
+    .kpiLabel {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $color-text-muted;
+      margin-bottom: 2px;
+    }
+
+    .kpiValue {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: $color-text;
+      line-height: 1.2;
+
+      &.highlight {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+// Tabela de Faturamento Diário
+.reportCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+}
+
+.reportHeader {
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-size: 1.25rem;
+    color: $color-text;
+  }
+
+  .timezoneNote {
+    font-size: 0.8rem;
+    color: $color-text-light;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+
+  th {
+    background-color: $color-surface-subtle;
+    padding: $spacing-sm $spacing-md;
+    font-weight: 600;
+    color: $color-text-muted;
+    border-bottom: 1px solid $color-border;
+  }
+
+  td {
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: #faf7f2;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+.dateCell {
+  font-weight: 700;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.qtyBadge {
+  background-color: $color-surface-subtle;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.revenueValue {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: $color-primary;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xxl $spacing-md;
+  color: $color-text-muted;
+
+  p {
+    margin-top: $spacing-xs;
+  }
+}

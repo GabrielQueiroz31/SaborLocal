@@ -1,0 +1,434 @@
+@use "@/styles/variables" as *;
+
+.pageContainer {
+  padding-top: $spacing-lg;
+  padding-bottom: 100px; // Espaço para a barra flutuante no mobile
+}
+
+.pageHeader {
+  margin-bottom: $spacing-md;
+
+  h1 {
+    font-size: 1.75rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xxs;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.9rem;
+  }
+}
+
+.mesaBox {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-sm;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+
+  label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $color-text;
+    white-space: nowrap;
+  }
+
+  .mesaInputWrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+
+    input {
+      width: 100px;
+      padding: 0.6rem 0.8rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      border: 2px solid $color-primary;
+      border-radius: $radius-md;
+      outline: none;
+      color: $color-primary;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+      }
+    }
+  }
+
+  .quickMesaBtns {
+    display: flex;
+    gap: $spacing-xxs;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      background-color: $color-surface-subtle;
+      color: $color-text;
+      transition: all $transition-fast;
+
+      &:hover {
+        background-color: $color-primary-light;
+        color: $color-primary;
+        border-color: $color-primary;
+      }
+
+      &.selected {
+        background-color: $color-primary;
+        color: #fff;
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @media (max-width: $breakpoint-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Filtro por Categoria em Abas / Chips
+.categoryTabs {
+  display: flex;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+  overflow-x: auto;
+  padding-bottom: $spacing-xs;
+  -webkit-overflow-scrolling: touch;
+
+  .categoryBtn {
+    padding: 0.5rem 1rem;
+    border-radius: $radius-full;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid $color-border;
+    background-color: $color-surface;
+    color: $color-text-muted;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-text;
+      border-color: $color-border-dark;
+    }
+
+    &.active {
+      background-color: $color-primary;
+      color: #fff;
+      border-color: $color-primary;
+    }
+  }
+}
+
+// Seção de Itens do Cardápio
+.menuSection {
+  margin-bottom: $spacing-xl;
+
+  .categoryTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    padding-bottom: $spacing-xxs;
+    border-bottom: 2px solid $color-primary-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-md;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: $spacing-sm;
+  }
+}
+
+.menuItemCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-sm;
+  transition: all $transition-fast;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.hasQuantity {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px $color-primary, $shadow-sm;
+    background-color: #fffdfb;
+  }
+
+  .itemDetails {
+    margin-bottom: $spacing-sm;
+
+    .itemName {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color-text;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .itemPrice {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+
+  .counterRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-xs;
+    margin-top: auto;
+  }
+
+  .counterControls {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background-color: $color-surface-subtle;
+    padding: 3px 6px;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+
+    .counterBtn {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-sm;
+      background-color: $color-surface;
+      color: $color-text;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $color-border;
+      transition: all $transition-fast;
+
+      &:hover:not(:disabled) {
+        background-color: $color-primary;
+        color: #fff;
+        border-color: $color-primary;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    .quantityDisplay {
+      min-width: 28px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: $color-text;
+    }
+  }
+
+  .obsInput {
+    margin-top: $spacing-xs;
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    outline: none;
+    background-color: #fff;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+
+    &::placeholder {
+      color: $color-text-light;
+    }
+  }
+}
+
+// Resumo do Pedido (Desktop e Drawer)
+.summaryCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
+  position: sticky;
+  top: 80px;
+
+  @media (max-width: $breakpoint-desktop) {
+    display: none; // No mobile/tablet usamos o bottom bar
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xs;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mesaInfo {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+.selectedList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  max-height: 340px;
+  overflow-y: auto;
+  margin-bottom: $spacing-md;
+  padding-right: 4px;
+}
+
+.selectedItem {
+  padding: $spacing-xs 0;
+  border-bottom: 1px dashed $color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-xs;
+  font-size: 0.9rem;
+
+  .itemInfo {
+    flex: 1;
+
+    .name {
+      font-weight: 600;
+      color: $color-text;
+    }
+
+    .obs {
+      font-size: 0.75rem;
+      color: $status-recebido;
+      font-style: italic;
+      display: block;
+    }
+  }
+
+  .itemTotal {
+    font-weight: 600;
+    color: $color-text;
+    white-space: nowrap;
+  }
+
+  .removeBtn {
+    color: $color-danger;
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $color-danger-bg;
+    }
+  }
+}
+
+.emptySummary {
+  text-align: center;
+  padding: $spacing-lg 0;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: $spacing-sm;
+  border-top: 2px solid $color-border;
+  margin-bottom: $spacing-md;
+
+  span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $color-text-muted;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    color: $color-primary;
+  }
+}
+
+.sendBtn {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.05rem;
+}
+
+// Barra Fixa Flutuante no Rodapé (Mobile / Tablet)
+.mobileFloatingBar {
+  display: none;
+
+  @media (max-width: $breakpoint-desktop) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $color-surface;
+    border-top: 1px solid $color-border;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    padding: $spacing-sm $spacing-md;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 40;
+    gap: $spacing-sm;
+  }
+
+  .mobileTotalInfo {
+    display: flex;
+    flex-direction: column;
+
+    .itemsCount {
+      font-size: 0.8rem;
+      color: $color-text-muted;
+    }
+
+    .estimatedTotal {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+
+  .mobileSendBtn {
+    flex: 1;
+    max-width: 220px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+}

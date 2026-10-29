@@ -1,0 +1,358 @@
+@use "@/styles/variables" as *;
+
+.pageContainer {
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-xxl;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    font-size: 1.85rem;
+    color: $color-primary;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+  }
+
+  .headerActions {
+    display: flex;
+    gap: $spacing-xs;
+  }
+}
+
+// Seção de Mesas com Contas em Aberto
+.mesasSection {
+  margin-bottom: $spacing-xl;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  box-shadow: $shadow-sm;
+
+  .mesasTitle {
+    font-size: 1.15rem;
+    color: $color-text;
+    margin-bottom: $spacing-sm;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+}
+
+.mesasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $spacing-md;
+}
+
+.mesaSummaryCard {
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  background-color: $color-surface-subtle;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-xs;
+
+  .mesaCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .mesaNum {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: $color-primary;
+    }
+
+    .mesaTotal {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: $color-text;
+    }
+  }
+
+  .mesaStatusInfo {
+    font-size: 0.825rem;
+    color: $color-text-muted;
+  }
+
+  .fecharBtn {
+    margin-top: $spacing-xxs;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+// Filtros de Status
+.filterTabs {
+  display: flex;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-lg;
+  overflow-x: auto;
+  padding-bottom: $spacing-xs;
+  -webkit-overflow-scrolling: touch;
+
+  .filterBtn {
+    padding: 0.45rem 1rem;
+    border-radius: $radius-full;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid $color-border;
+    background-color: $color-surface;
+    color: $color-text-muted;
+    white-space: nowrap;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-text;
+      border-color: $color-border-dark;
+    }
+
+    &.active {
+      background-color: $color-primary;
+      color: #fff;
+      border-color: $color-primary;
+    }
+  }
+}
+
+// Grade de Pedidos
+.ordersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $spacing-md;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.orderCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  &.pago {
+    opacity: 0.85;
+    background-color: #faf9f6;
+  }
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-xs;
+  padding-bottom: $spacing-xs;
+  border-bottom: 1px solid $color-border;
+
+  .orderMesa {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  .orderDate {
+    font-size: 0.775rem;
+    color: $color-text-light;
+  }
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-sm;
+
+  .statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: $radius-full;
+    font-size: 0.775rem;
+    font-weight: 700;
+
+    &.recebido {
+      background-color: $status-recebido-bg;
+      color: $status-recebido;
+    }
+
+    &.preparo {
+      background-color: $status-preparo-bg;
+      color: $status-preparo;
+    }
+
+    &.entregue {
+      background-color: $status-entregue-bg;
+      color: $status-entregue;
+    }
+  }
+
+  .pagoBadge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+    background-color: $status-pago-bg;
+    color: $status-pago;
+  }
+}
+
+.orderAuthor {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  margin-bottom: $spacing-sm;
+}
+
+.itemsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-xs;
+  border-bottom: 1px dashed $color-border;
+  flex: 1;
+
+  .itemRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+
+    .itemName {
+      color: $color-text;
+
+      .itemObs {
+        display: block;
+        font-size: 0.75rem;
+        color: #92400e;
+        font-style: italic;
+      }
+    }
+
+    .itemPrice {
+      font-weight: 600;
+      color: $color-text-muted;
+      white-space: nowrap;
+    }
+  }
+}
+
+.orderFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+
+  .totalValue {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: $color-primary;
+  }
+}
+
+// Modal de Fechamento de Conta
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalCard {
+  background-color: $color-surface;
+  border-radius: $radius-lg;
+  max-width: 440px;
+  width: 100%;
+  padding: $spacing-xl;
+  box-shadow: $shadow-lg;
+
+  h2 {
+    font-size: 1.4rem;
+    color: $color-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    margin-bottom: $spacing-md;
+  }
+
+  .receiptTotal {
+    background-color: $color-surface-subtle;
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color-text-muted;
+    }
+
+    strong {
+      font-size: 1.6rem;
+      color: $color-primary;
+    }
+  }
+
+  .modalActions {
+    display: flex;
+    gap: $spacing-sm;
+    justify-content: flex-end;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xxl $spacing-md;
+  color: $color-text-muted;
+  background-color: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

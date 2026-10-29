@@ -1,0 +1,151 @@
+@use "@/styles/variables" as *;
+
+.navbar {
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  gap: $spacing-md;
+
+  @media (max-width: $breakpoint-tablet) {
+    flex-wrap: wrap;
+    padding: $spacing-xs $spacing-sm;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: $color-primary;
+
+  .brandIcon {
+    font-size: 1.3rem;
+  }
+
+  .brandSub {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: $color-text-muted;
+    display: block;
+    line-height: 1;
+  }
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  list-style: none;
+
+  @media (max-width: $breakpoint-tablet) {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: $spacing-xs;
+    border-top: 1px solid $color-border;
+    gap: $spacing-xxs;
+  }
+}
+
+.navItem {
+  white-space: nowrap;
+}
+
+.navLink {
+  display: block;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $color-text-muted;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+    background-color: $color-primary-light;
+  }
+
+  &.active {
+    color: $color-primary;
+    background-color: $color-primary-light;
+    font-weight: 600;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @media (max-width: $breakpoint-tablet) {
+    margin-left: auto;
+  }
+}
+
+.userBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
+  }
+
+  .userName {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-text;
+    line-height: 1.2;
+  }
+
+  .userRole {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1px 6px;
+    border-radius: $radius-full;
+
+    &.gerente {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    &.garcom {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+  }
+}
+
+.logoutBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background-color: $color-surface;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $color-danger-bg;
+    color: $color-danger;
+    border-color: $color-danger-border;
+  }
+}

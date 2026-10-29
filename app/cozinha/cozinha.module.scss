@@ -1,0 +1,238 @@
+@use "@/styles/variables" as *;
+
+.pageContainer {
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-xxl;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    font-size: 1.85rem;
+    color: $color-primary;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+  }
+}
+
+.liveIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: $status-entregue-bg;
+  color: $status-entregue;
+  border: 1px solid $status-entregue-border;
+  padding: 6px 14px;
+  border-radius: $radius-full;
+  font-size: 0.825rem;
+  font-weight: 600;
+
+  .pulseDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $status-entregue;
+    box-shadow: 0 0 0 rgba($status-entregue, 0.4);
+    animation: pulse 1.8s infinite;
+  }
+}
+
+.kanbanBoard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+  align-items: start;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.column {
+  background-color: $color-surface-subtle;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  padding: $spacing-md;
+  min-height: 480px;
+
+  &--recebido {
+    border-top: 4px solid $status-recebido;
+  }
+
+  &--preparo {
+    border-top: 4px solid $status-preparo;
+  }
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-xs;
+  border-bottom: 1px solid $color-border;
+
+  h2 {
+    font-size: 1.2rem;
+    color: $color-text;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  .badgeCount {
+    padding: 2px 10px;
+    border-radius: $radius-full;
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    &.recebido {
+      background-color: $status-recebido-bg;
+      color: $status-recebido;
+    }
+
+    &.preparo {
+      background-color: $status-preparo-bg;
+      color: $status-preparo;
+    }
+  }
+}
+
+.orderList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.ticketCard {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  padding: $spacing-md;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-xs;
+  padding-bottom: $spacing-xxs;
+  border-bottom: 1px dashed $color-border;
+
+  .mesaTag {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $color-primary;
+  }
+
+  .timeTag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $color-text-muted;
+    background-color: $color-surface-subtle;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+
+    &.urgent {
+      background-color: $color-danger-bg;
+      color: $color-danger;
+      font-weight: 700;
+    }
+  }
+}
+
+.ticketMeta {
+  font-size: 0.775rem;
+  color: $color-text-light;
+  margin-bottom: $spacing-sm;
+}
+
+.ticketItems {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+.ticketItem {
+  font-size: 0.925rem;
+
+  .itemMain {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-xs;
+
+    .itemQty {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: $color-text;
+      min-width: 24px;
+    }
+
+    .itemName {
+      font-weight: 600;
+      color: $color-text;
+    }
+  }
+
+  .itemObs {
+    margin-top: 2px;
+    margin-left: 30px;
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #92400e;
+    background-color: #fef3c7;
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    font-weight: 500;
+  }
+}
+
+.ticketFooter {
+  padding-top: $spacing-xs;
+  border-top: 1px solid $color-surface-subtle;
+
+  .actionBtn {
+    width: 100%;
+    padding: 0.65rem;
+    font-size: 0.925rem;
+    font-weight: 700;
+  }
+}
+
+.emptyColumn {
+  padding: $spacing-xl $spacing-md;
+  text-align: center;
+  color: $color-text-light;
+  font-size: 0.9rem;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
